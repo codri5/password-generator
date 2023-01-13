@@ -124,19 +124,21 @@ function generatePassword() {
   passChar = '';
 
   if(passOptions.length >= 10 && passOptions.length <= 64) {
-
+    for (let i = 0; i < passOptions.length; i++) {
       if (passLower) {passChar += getRandom(lowerCasedCharacters);}
       if (passUpper) {passChar += getRandom(upperCasedCharacters);}
       if (passNumeric) {passChar += getRandom(numericCharacters);}
       if (passSpecial) {passChar += getRandom(specialCharacters);}
+    }
 
       newPassword = '';
 
       for (let i = 0; i < passOptions.length; i++) {
         newPassword += getRandom(passChar);
       }
-      console.log(newPassword);
       
+      console.log(newPassword);
+
     } else {
     return alert("Please enter a number between 10 and 64!")
   }
