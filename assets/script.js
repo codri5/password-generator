@@ -1,3 +1,5 @@
+"use strict";
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -90,8 +92,25 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  let passLength = prompt("Please choose a password length between 10 and 64 characters: ");
+  let passLower = confirm("Would you like to include lowercase characters?");
+  let passUpper = confirm("Would you like to include uppercase characters?");
+  let passNumeric = confirm("Would you like to include numeric characters?");
+  let passSpecial = confirm("Would you like to include special characters?");
+  
+  const passOptions = {
+    length: passLength,
+    lower: passLower,
+    upper: passUpper,
+    numeric: passNumeric,
+    special: passSpecial
+  };
 
+  return passOptions;
 }
+
+console.log(getPasswordOptions());
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
