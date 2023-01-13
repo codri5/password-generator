@@ -1,4 +1,5 @@
-"use strict";
+let passLength, passLower, passUpper, passNumeric, passSpecial;
+let passOptions, newPassword, passChar;
 
 // Array of special characters to be included in password
 var specialCharacters = [
@@ -92,32 +93,56 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  let passLength = prompt("Please choose a password length between 10 and 64 characters: ");
-  let passLower = confirm("Would you like to include lowercase characters?");
-  let passUpper = confirm("Would you like to include uppercase characters?");
-  let passNumeric = confirm("Would you like to include numeric characters?");
-  let passSpecial = confirm("Would you like to include special characters?");
+
+  passLength = parseInt(prompt("Please choose a password length between 10 and 64 characters: "));
+  passLower = confirm("Would you like to include lowercase characters?");
+  passUpper = confirm("Would you like to include uppercase characters?");
+  passNumeric = confirm("Would you like to include numeric characters?");
+  passSpecial = confirm("Would you like to include special characters?");
   
-  const passOptions = {
+  passOptions = {
     length: passLength,
     lower: passLower,
     upper: passUpper,
     numeric: passNumeric,
     special: passSpecial
   };
+
   return passOptions;
 }
 
+console.log(getPasswordOptions());
+
 // Function for getting a random element from an array
 function getRandom(arr) {
-  let randElem = arr[Math.floor(Math.random() * arr.length)];
-  return randElem;
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
   
+  passChar = '';
+
+  if(passOptions.length >= 10 && passOptions.length <= 64) {
+
+      if (passLower) {passChar += getRandom(lowerCasedCharacters);}
+      if (passUpper) {passChar += getRandom(upperCasedCharacters);}
+      if (passNumeric) {passChar += getRandom(numericCharacters);}
+      if (passSpecial) {passChar += getRandom(specialCharacters);}
+
+      newPassword = '';
+
+      for (let i = 0; i < passOptions.length; i++) {
+        newPassword += getRandom(passChar);
+      }
+      console.log(newPassword);
+      
+    } else {
+    return alert("Please enter a number between 10 and 64!")
+  }
 }
+
+generatePassword();
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -132,3 +157,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
