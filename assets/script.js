@@ -105,21 +105,18 @@ function getPasswordOptions() {
     numeric: passNumeric,
     special: passSpecial
   };
-
   return passOptions;
 }
 
-console.log(getPasswordOptions());
-
-
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  let randElem = arr[Math.floor(Math.random() * arr.length)];
+  return randElem;
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
+  
 }
 
 // Get references to the #generate element
