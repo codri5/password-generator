@@ -18,6 +18,8 @@ A random password will then be generated. In order to generate a new random pass
 
 ## Screenshots
 
+<img src="assets/images/screenshot.png" width="200" height="150" alt="Password Generator"/>
+
 
 ## Credits
 
