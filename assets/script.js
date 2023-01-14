@@ -1,6 +1,7 @@
 'use strict';
 
-let passLength, passLower, passUpper, passNumeric, passSpecial, passOptions, passChar, newPassword;
+// Global variable declaration
+let passLength, passLower, passUpper, passNumeric, passSpecial, passOptions, passChar, newPassword; 
 
 // Array of special characters to be included in password
 var specialCharacters = [
@@ -95,10 +96,12 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
 
-  passLength = parseInt(prompt('Please choose a password length between 10 and 64 characters: '));
+  // Returns string input as integer
+  passLength = parseInt(prompt('Please choose a password length between 10 and 64 characters: ')); 
 
+  // Asks for password length input until condition is met
   while(passLength < 10 || passLength > 64) {
-    alert('Your number is out of range !');
+    alert('Your number is out of range!');
     passLength = prompt('Please choose a new number between 10 and 64: ');
   }
   
@@ -106,11 +109,12 @@ function getPasswordOptions() {
   passUpper = confirm('Would you like to include uppercase characters?');
   passNumeric = confirm('Would you like to include numeric characters?');
   passSpecial = confirm('Would you like to include special characters?');
- 
-  passOptions = {
+
+  // Stores user input in object
+  passOptions = {              
     length: passLength,
     lower: passLower,
-    upper: passUpper,
+    upper: passUpper,         
     numeric: passNumeric,
     special: passSpecial
   };
@@ -129,7 +133,7 @@ function generatePassword() {
   
   passChar = '';
 
-  while(passOptions.length >= 10 && passOptions.length <= 64) {
+  while((passOptions.length) >= 10 && (passOptions.length <= 64)) {
     for (let i = 0; i < passOptions.length; i++) {
       if (passLower) { passChar += getRandom(lowerCasedCharacters); }
       if (passUpper) { passChar += getRandom(upperCasedCharacters); }
@@ -137,14 +141,17 @@ function generatePassword() {
       if (passSpecial) { passChar += getRandom(specialCharacters); }
     }
 
-      newPassword = '';
+    newPassword = '';
 
-      for (let i = 0; i < passOptions.length; i++) {
-        newPassword += getRandom(passChar);
-      }
-      return document.getElementById("password").innerHTML = newPassword;
+    for (let i = 0; i < passOptions.length; i++) {
+      newPassword += getRandom(passChar);
+    }
+
+    // Changes targeted HTML content to generated password
+    return document.getElementById('password').innerHTML = newPassword;
   }
 }
+
 generatePassword();
 
 // Get references to the #generate element

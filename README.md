@@ -14,7 +14,9 @@ To use this application, go to: https://codri5.github.io/password-generator.
 
 The user will have to make its choice from a series of criteria that will be presented.
 
-A random password will then be generated. In order to generate a new random password based on the criteria already selected, press the 'Generate Password' button.
+A random password will then be generated. In order to generate a new random password based on the criteria already selected, press the 'Generate Password' button. 
+
+To generate a random password with different criteria, refresh the browser and make a new selection.
 
 ## Screenshots
 
