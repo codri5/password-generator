@@ -99,7 +99,7 @@ function getPasswordOptions() {
 
   while(passLength < 10 || passLength > 64) {
     alert('Your number is out of range !');
-    passLength = prompt('Please choose a new number: ');
+    passLength = prompt('Please choose a new number between 10 and 64: ');
   }
   
   passLower = confirm('Would you like to include lowercase characters?');
@@ -131,10 +131,10 @@ function generatePassword() {
 
   while(passOptions.length >= 10 && passOptions.length <= 64) {
     for (let i = 0; i < passOptions.length; i++) {
-      if (passLower) {passChar += getRandom(lowerCasedCharacters);}
-      if (passUpper) {passChar += getRandom(upperCasedCharacters);}
-      if (passNumeric) {passChar += getRandom(numericCharacters);}
-      if (passSpecial) {passChar += getRandom(specialCharacters);}
+      if (passLower) { passChar += getRandom(lowerCasedCharacters); }
+      if (passUpper) { passChar += getRandom(upperCasedCharacters); }
+      if (passNumeric) { passChar += getRandom(numericCharacters); }
+      if (passSpecial) { passChar += getRandom(specialCharacters); }
     }
 
       newPassword = '';
